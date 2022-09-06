@@ -11,12 +11,12 @@ export interface Book {
 
 export interface User {
     name: string;
-    borrowId: string;
+    borrowId: number;
     email: string;
 
 }
 
 export interface Borrow {
-    borrowId: string;
+    borrowId: number;
     bookId: number
 }
