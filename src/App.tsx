@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.scss'
 import { Book, Borrow} from './models/data';
 import jsonData from './data/json.json'
+import BookGrid from './components/book-grid/BookGrid';
+
 
 function App() {
   const [books, setBooks] = useState<Book[]>(jsonData.books);
@@ -17,7 +19,7 @@ function App() {
     // tips: immer.js
   }
 
-  const handleReturn = (bookId: number) => {
+  const handleReturnClick = (bookId: number) => {
     let newBorrowList = borrowList.filter(borrow => borrow.bookId !== bookId);
     setBorrowList(newBorrowList);
   }
@@ -30,21 +32,8 @@ function App() {
 	</header>
     <main>
       <h1> Våra böcker </h1>
-      <div className="book-grid">
-        {books.map(book => (
-            <div className="card" key={book.bookId}>
-              <h3> {book.title} </h3>
-              <img src={book.imageUrl} alt="bild" />
-              <p> {book.author} </p>
-              {borrowList.find(borrow => borrow.bookId === book.bookId)
-              ? <button className='return' onClick={() => handleReturn(book.bookId)}> Återlämna </button> 
-              : <button onClick={() => handleBorrowClick(book.bookId)}> Låna </button>}
-            </div>
-
-        ))}
-
-
-      </div>
+      <BookGrid books={books} borrowList={borrowList} handleReturnClick={handleReturnClick}
+          handleBorrowClick={handleBorrowClick}/>
     </main>
     <footer>
       Kontakta oss

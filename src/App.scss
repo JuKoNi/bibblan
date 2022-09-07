@@ -40,10 +40,16 @@ h1, h2, h3 {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
 	border: 1px solid $headerBg;
 	border-radius: 1em;
 	padding: 0.5em 1em;
 	margin: 0.4em;
+}
+
+.card .separator {
+    flex-grow: 1;
 }
 .card button {
 	background-color: $buttonBg;
