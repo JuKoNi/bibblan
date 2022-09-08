@@ -1,25 +1,32 @@
 import { Book, Borrow } from '../../models/data';
-import BookCard from './BookCard'
+import BookCard from './BookCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store'
 
 
 interface Props {
-    books: Book[];
+    // books: Book[];
     borrowList: Borrow[];
     handleReturnClick: (bookId: number) => void;
     handleBorrowClick: (bookId: number) => void;
 
+
 }
 
-const BookGrid = ({ books, borrowList, handleBorrowClick, handleReturnClick}: Props) => (
-    <div className="book-grid">
-    {books.map(book => (
-      <BookCard key={book.bookId} book={book} handleBorrowClick={handleBorrowClick} handleReturnClick={handleReturnClick}
-        borrowList={borrowList}/>
+const BookGrid = ({ borrowList, handleBorrowClick, handleReturnClick}: Props) =>
+ {  const books = useSelector((state: RootState) => state.books)
+    return (
+      <div className="book-grid">
+      {books.map(book => (
+        <BookCard key={book.bookId} book={book} handleBorrowClick={handleBorrowClick} handleReturnClick={handleReturnClick}
+          borrowList={borrowList}/>
+  
+      ))}
+    
 
-    ))}
 
 
   </div>
-)
+ )}
 
 export default BookGrid;

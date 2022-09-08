@@ -6,7 +6,8 @@ import BookGrid from './components/book-grid/BookGrid';
 
 
 function App() {
-  const [books, setBooks] = useState<Book[]>(jsonData.books);
+  // har flyttat books till redux
+  // const [books, setBooks] = useState<Book[]>(jsonData.books);
   const [borrowList, setBorrowList] = useState<Borrow[]>([]);
 
   const handleBorrowClick = (bookId: number) => {
@@ -32,7 +33,7 @@ function App() {
 	</header>
     <main>
       <h1> Våra böcker </h1>
-      <BookGrid books={books} borrowList={borrowList} handleReturnClick={handleReturnClick}
+      <BookGrid borrowList={borrowList} handleReturnClick={handleReturnClick}
           handleBorrowClick={handleBorrowClick}/>
     </main>
     <footer>
