@@ -6,11 +6,11 @@
 
 import { combineReducers } from "redux";
 import { reducer as booksReducer } from './booksReducer';
-//import { reducer as borrowListReducer } from './borrowList'
+import { reducer as borrowListReducer } from './borrowListReducer'
 
 const rootReducer = combineReducers({
    books: booksReducer,
-   // borrowListReducer
+   borrowList: borrowListReducer
 })
 
 export { rootReducer }
